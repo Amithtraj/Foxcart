@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+	{% block content %}
+<head>
+	<title>Shopping Cart UI</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'cr/style.css' %}">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,900" rel="stylesheet">
+</head>
+
+<body>
+	
+   <div class="CartContainer">
+   	   <div class="Header">
+   	   	<h3 class="Heading">Shopping Cart</h3>
+   	   	<h5 class="Action">Remove all</h5>
+   	   </div>
+---------------------------------
+{% for i in ci %}
+   	   <div class="Cart-Items">
+   	   	  <div class="image-box">
+   	   	  	<img src="{{i.prodt.get_url}}" alt="{{i.prodt.name}}"  style="height:120px"  />
+   	   	  </div>
+   	   	  <div class="about">
+   	   	  	<h1 class="title">ID : {{i.prodt.id}}</h1>
+   	   	  	<h3 class="subtitle">250ml</h3>
+   	   	  	<img src="{% static 'cr/veg.png' %}" style="height:30px" />
+   	   	  </div>
+   	   	  <div class="counter">
+   	   	  	<div class="btn">+</div>
+   	   	  	<div class="count">2</div>
+   	   	  	<div class="btn">-</div>
+   	   	  </div>
+   	   	  <div class="prices">
+   	   	  	<div class="amount">{{i.prodt.price}}</div>
+   	   	  	<div class="save"><u>Save for later</u></div>
+   	   	  	<div class="remove"><u>Remove</u></div>
+   	   	  </div>
+   	   </div>
+{% endfor %}
+------------------------------------------   	   
+   	 <hr>
+   	 <div class="checkout">
+   	 <div class="total">
+   	 	<div>
+   	 		<div class="Subtotal">Sub-Total</div>
+   	 		<div class="items">2 items</div>
+   	 	</div>
+   	 	<div class="total-amount">$6.18</div>
+   	 </div>
+   	 <button class="button">Checkout</button></div>
+   </div>
+  
+</body>
+{% endblock %}
+
